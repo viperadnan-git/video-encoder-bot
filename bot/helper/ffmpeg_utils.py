@@ -46,6 +46,7 @@ def encode(filepath):
     else:
         audio_opts = '-c:a aac -b:a 128k'
     call(['ffmpeg', '-i', filepath] + video_opts.split() + audio_opts.split() + [output_filepath])
+    os.remove(filepath)
     return output_filepath
 
 def get_thumbnail(in_filename, path, ttl):
