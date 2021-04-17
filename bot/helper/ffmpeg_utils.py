@@ -65,8 +65,15 @@ def get_thumbnail(in_filename, path, ttl):
       return None
 
 def get_duration(filepath):
-  metadata = extractMetadata(createParser(filepath))
-  if metadata.has("duration"):
-    return metadata.get('duration').seconds
-  else:
-    return 0
+    metadata = extractMetadata(createParser(filepath))
+    if metadata.has("duration"):
+      return metadata.get('duration').seconds
+    else:
+      return 0
+
+def get_width_height(filepath):
+    metadata = extractMetadata(createParser(filepath))
+    if metadata.has("width") and metadata.has("height"):
+      return metadata.get("width"), metadata.get("height")
+    else:
+      return 1280, 720
