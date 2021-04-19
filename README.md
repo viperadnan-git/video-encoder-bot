@@ -10,7 +10,7 @@ Add values in environment variables or add them in [config.env.template](./confi
 - `DOWNLOAD_DIR` - (Optional) Temporary download directory to keep downloaded files.
 
 ### Configuring Encoding Format
-To change the ffmpeg profile edit them in [ffmpeg_utils.py](./ffmpeg_utils.py)
+To change the ffmpeg profile edit them in [ffmpeg_utils.py](/bot/helper/ffmpeg_utils.py)
 
 ### Installing Requirements
 Install the required Python Modules in your machine.
