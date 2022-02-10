@@ -1,6 +1,7 @@
 import os
 from bot import data, download_dir
 from pyrogram.types import Message
+from pyrogram.errors.exceptions.bad_request_400 import MessageNotModified
 from .ffmpeg_utils import encode, get_thumbnail, get_duration, get_width_height
 
 def on_task_complete():
@@ -27,6 +28,8 @@ def add_task(message: Message):
       else:
         msg.edit("```Something wents wrong while encoding your file. Make sure it is not already in HEVC format.```")
         os.remove(filepath)
+    except MessageNotModified:
+      pass
     except Exception as e:
       msg.edit(f"```{e}```")
     on_task_complete()
