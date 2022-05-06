@@ -2,4 +2,4 @@ pyrogram
 TgCrypto
 python-dotenv
 hachoir
-ffmpeg-python
+
