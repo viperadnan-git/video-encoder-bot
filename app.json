@@ -7,29 +7,34 @@
         "Nice",
         "good"
     ],
-    "repository": "https://github.com/Nirusaki/video-encoder-bot-1",
-    "website": "https://github.com/Nirusaki/video-encoder-bot-1",
-    "success_url": "https://github.com/Nirusaki/video-encoder-bot-1",
+    "repository": "https://github.com/unknown263/video-encoder-bot8364",
+    "website": "https://github.com/unknown263/video-encoder-bot8364",
+    "success_url": "https://github.com/unknown263/video-encoder-bot8364",
     "env": {
         "API_ID": {
-            "description": "",
+            "description": "login telegram.org and you will get paste it here",
             "required": "True"
         },
         "API_HASH": {
-            "description": "",
+            "description": "login telegram.org and you will get paste it here",
             "required": "True"
         },
         "BOT_TOKEN": {
-            "description": "",
+            "description": "after creating a bot you will get some random Letter and number paste it here",
             "required": "True"
         },
         "SUDO_USERS": {
-            "description": "",
+            "description": "put your id if you want others to use it then put their IDs too here",
             "required": "True"
         },
         "DOWNLOAD_DIR": {
             "description": "download/",
             "required": "True"
+        },
+        "FFMPEG": {
+            "description": "Put your FFMPEG code.",
+            "value": "",
+            "required": "False"
         }
     },
     "stack": "container",
