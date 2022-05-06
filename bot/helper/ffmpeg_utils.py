@@ -1,4 +1,4 @@
-import os
+ximport os
 import sys
 import json
 import time
@@ -60,7 +60,8 @@ def get_thumbnail(in_filename, path, ttl):
             .run(capture_stdout=True, capture_stderr=True)
         )
         return out_filename
-    except ffmpeg.Error as e:
+    except:
+        pass
       return None
 
 def get_duration(filepath):
