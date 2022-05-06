@@ -12,15 +12,15 @@
     "success_url": "https://github.com/unknown263/video-encoder-bot8364",
     "env": {
         "API_ID": {
-            "description": "login telegram.org and you will get paste it here",
+            "description": "Get it by creating an app on https://my.telegram.org",
             "required": "True"
         },
         "API_HASH": {
-            "description": "login telegram.org and you will get paste it here",
+            "description": "Get it by creating an app on https://my.telegram.org",
             "required": "True"
         },
         "BOT_TOKEN": {
-            "description": "after creating a bot you will get some random Letter and number paste it here",
+            "description": "after creating a bot in @BotFather you will get some random Letter and number paste it here",
             "required": "True"
         },
         "SUDO_USERS": {
