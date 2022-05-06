@@ -30,11 +30,6 @@
         "DOWNLOAD_DIR": {
             "description": "download/",
             "required": "False"
-        },
-        "FFMPEG": {
-            "description": "Put your FFMPEG code.",
-            "value": "",
-            "required": "True"
         }
     },
     "stack": "container",
