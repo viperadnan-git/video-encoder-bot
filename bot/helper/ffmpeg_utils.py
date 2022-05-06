@@ -62,7 +62,7 @@ def get_thumbnail(in_filename, path, ttl):
         return out_filename
     except:
         pass
-      return None
+        return None
 
 def get_duration(filepath):
     metadata = extractMetadata(createParser(filepath))
