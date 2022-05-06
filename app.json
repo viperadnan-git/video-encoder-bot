@@ -29,12 +29,12 @@
         },
         "DOWNLOAD_DIR": {
             "description": "download/",
-            "required": "True"
+            "required": "False"
         },
         "FFMPEG": {
             "description": "Put your FFMPEG code.",
             "value": "",
-            "required": "False"
+            "required": "True"
         }
     },
     "stack": "container",
