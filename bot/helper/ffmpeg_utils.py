@@ -9,15 +9,14 @@ from subprocess import call, check_output
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 
-eni = basefilepath.split("/")[-1]
-xnx = eni.split(".")[-1]
-nam = opm.replace("_", " ")
-nam = opm.replace(".", " ")
-
-anitopy_options = {'allowed_delimiters': ' '}
 aysnc def encode(filepath):
     basefilepath, extension = os.path.splitext(filepath)
     output_filepath = basefilepath + '.mkv'
+    eni = basefilepath.split("/")[-1]
+    xnx = eni.split(".")[-1]
+    nam = opm.replace("_", " ")
+    nam = opm.replace(".", " ")
+    nam = nam + '.mkv'
     
 def get_duration(filepath):
     metadata = extractMetadata(createParser(filepath))
