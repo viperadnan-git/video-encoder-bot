@@ -31,7 +31,7 @@ def encode(filepath):
     return output_filepath, og
 
 def get_thumbnail(filepath):
-    outputfilepath='/bot/thumb.jpg'
+    outputfilepath='/bot/thumb.jpg/'
     screenshot_cmd ='-ss 00:30 -frames:v 1 -q:v 2'
     call(['ffmpeg', '-i', filepath] + screenshot_cmd.split() + [outputfilepath])
   
