@@ -4,7 +4,7 @@ import sys
 import json
 import anitopy
 import time
-from bot import ffmpeg
+import ffmpeg
 from subprocess import call, check_output
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
@@ -27,7 +27,7 @@ def encode(filepath):
       episode_no = new_name["episode_number"]
       joined_string = f"{joined_string}" + f" [Episode {episode_no}]"
     og = joined_string + " [@R136a1Encodes]" + ".mkv"
-    fmd = '-map 0 -c:s copy'
+    fmd = 'ffmpeg'
     call(['ffmpeg', '-i', filepath] + fmd.split() + [output_filepath])
     os.remove(filepath)
     return output_filepath, og
