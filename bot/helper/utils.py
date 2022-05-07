@@ -19,10 +19,11 @@ def add_task(message: Message):
       if new_file:
         msg.edit("**⬆️ Video Encoded Starting To Upload ⬆️**")
         thumb = get_thumbnail(filepath)
+        thumb = "/bot/thumb.jpg/"
         msg.edit("**⬆️ Uploading Video ⬆️**")
-        message.reply_document(new_file, quote=True, force_document=True, thumb="/bot/thumb.jpg", caption=og)
+        message.reply_document(new_file, quote=True, force_document=True, thumb=thumb, caption=og)
         os.remove(new_file)
-        os.remove("/bot/thumb.jpg")
+        os.remove("/bot/thumb.jpg/")
         msg.edit("**File Encoded**")
       else:
         msg.edit("**Error Contact @NIRUSAKIMARVALE**")
