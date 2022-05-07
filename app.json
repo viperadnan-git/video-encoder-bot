@@ -31,7 +31,6 @@
             "description": "Put your FFMPEG code.",
             "value": "-preset faster -c:v libx265 -crf 27 -map 0:v -c:a libfdk_aac -b:a 64k -map 0:a -c:s copy -map 0:s?",
             "required": "False"
-
         }
     },
     "stack": "container",
