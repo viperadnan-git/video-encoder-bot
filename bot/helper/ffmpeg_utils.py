@@ -11,10 +11,8 @@ from subprocess import Popen, PIPE
 
 def encode(filepath):
     basefilepath, extension = os.path.splitext(filepath)
-    eni = filepath.split("/")[-1]
-    xnx = eni.split(".")[-1]
-    nam = xnx
-    nam = nam.replace("_", " ")
+    output_filepath = basefilepath
+    nam = output_filepath.replace("_", " ")
     nam = nam.replace(".", " ")
     nam = nam + '.mkv'
     new_name = anitopy.parse(nam)
@@ -33,11 +31,13 @@ def encode(filepath):
     os.remove(filepath)
     return output_filepath, og
 
-
 def get_thumbnail(filepath):
     outputfilepath='/bot/thumb.jpg'
-    screenshot_cmd ='-ss 00:30 -vframes=1'
+    screenshot_cmd ='-ss 00:30 -frames:v 1 -q:v 2'
     call(['ffmpeg', '-i', filepath] + screenshot_cmd.split() + [outputfilepath])
+    return out_filename
+    except:
+        pass
   
 def get_duration(filepath):
     metadata = extractMetadata(createParser(filepath))
