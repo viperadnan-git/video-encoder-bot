@@ -1,9 +1,9 @@
+import asyncio
 import os
 import sys
 import json
 import time
 import ffmpeg
-import asyncio
 from subprocess import call, check_output
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
