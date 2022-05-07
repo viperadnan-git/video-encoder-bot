@@ -1,5 +1,6 @@
 import os
 from bot import data, download_dir
+import asyncio
 from pyrogram.types import Message
 from pyrogram.errors.exceptions.bad_request_400 import MessageNotModified
 from .ffmpeg_utils import encode, get_thumbnail, get_duration, get_width_height
@@ -14,7 +15,7 @@ def add_task(message: Message):
       msg = message.reply_text("```Downloading video...```", quote=True)
       filepath = message.download(file_name=download_dir)
       msg.edit("```Encoding video...```")
-      new_file = encode(filepath)
+      new_file = await encode(filepath)
       if new_file:
         msg.edit("```Video Encoded, getting metadata...```")
         duration = get_duration(new_file)
