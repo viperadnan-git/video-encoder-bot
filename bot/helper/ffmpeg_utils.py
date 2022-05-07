@@ -4,7 +4,7 @@ import sys
 import json
 import anitopy
 import time
-import ffmpeg
+from bot import ffmpeg
 from subprocess import call, check_output
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
