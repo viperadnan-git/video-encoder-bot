@@ -26,6 +26,11 @@
         "SUDO_USERS": {
             "description": "put your id if you want others to use it then put their IDs too here",
             "required": "True"
+        },
+        "FFMPEG": {
+            "description": "Put your FFMPEG code.",
+            "value": "ffmpeg -i '''{}''' -preset ultrafast -c:v libx265 -crf 27 -map 0:v -c:a aac -map 0:a -c:s copy -map 0:s? '''{}''' -y",
+            "required": "False"
 
         }
     },
