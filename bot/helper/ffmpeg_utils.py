@@ -8,6 +8,7 @@ from subprocess import call, check_output
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 
+asyncio def encode
 def encode(filepath):
     basefilepath, extension = os.path.splitext(filepath)
     output_filepath = basefilepath + '.HEVC' + '.mp4'
