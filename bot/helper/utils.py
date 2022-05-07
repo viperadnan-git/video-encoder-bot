@@ -3,7 +3,7 @@ from bot import data, download_dir
 import asyncio
 from pyrogram.types import Message
 from pyrogram.errors.exceptions.bad_request_400 import MessageNotModified
-from .ffmpeg_utils import encode, get_thumbnail, get_duration, get_width_height
+from .ffmpeg_utils import encode, get_thumbnail
 
 def on_task_complete():
     del data[0]
@@ -15,10 +15,10 @@ def add_task(message: Message):
       msg = message.reply_text("```Downloading video...```", quote=True)
       filepath = message.download(file_name=download_dir)
       msg.edit("```Encoding video...```")
-      new_file, og = encode(filepath)
+      new_file, og = await encode(filepath)
       if new_file:
         msg.edit("```Video Encoded, getting metadata...```")
-        thumb = get_thumbnail(new_file)
+        thumb = await get_thumbnail(new_file)
         msg.edit("```Uploading video...```")
         message.reply_document(new_file, quote=True, force_document=True, thumb="/bot/thumb.jpg", caption=og)
         os.remove(new_file)
