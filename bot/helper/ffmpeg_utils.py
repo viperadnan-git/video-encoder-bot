@@ -12,10 +12,6 @@ def encode(filepath):
     basefilepath, extension = os.path.splitext(filepath)
     output_filepath = basefilepath + '.HEVC' + '.mp4'
     assert(output_filepath != filepath)
-    if os.path.isfile(output_filepath):
-        print('Skipping "{}": file already exists'.format(output_filepath))
-        return None
-    print(filepath)
     
 def get_duration(filepath):
     metadata = extractMetadata(createParser(filepath))
