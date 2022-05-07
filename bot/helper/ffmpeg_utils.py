@@ -21,9 +21,9 @@ async def encode(filepath):
     basefilepath, extension = os.path.splitext(filepath)
     eni = filepath.split("/")[-1]
     xnx = eni.split(".")[-1]
-    nam = opm
-    nam = opm.replace("_", " ")
-    nam = opm.replace(".", " ")
+    nam = xnx
+    nam = nam.replace("_", " ")
+    nam = nam.replace(".", " ")
     nam = nam + '.mkv'
     new_name = anitopy.parse(nam)
     anime_name = new_name["anime_title"]
