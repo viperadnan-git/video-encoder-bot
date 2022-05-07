@@ -18,7 +18,7 @@ async def add_task(message: Message):
       new_file, og = await encode(filepath)
       if new_file:
         msg.edit("```Video Encoded, getting metadata...```")
-        thumb = await get_thumbnail(new_file)
+        thumb = await get_thumbnail(filepath)
         msg.edit("```Uploading video...```")
         message.reply_document(new_file, quote=True, force_document=True, thumb="/bot/thumb.jpg", caption=og)
         os.remove(new_file)
@@ -29,6 +29,6 @@ async def add_task(message: Message):
         os.remove(filepath)
     except MessageNotModified:
       pass
-    except Exception as e:
-      msg.edit(f"```{e}```")
+    except Exception:
+        pass
     on_task_complete()
