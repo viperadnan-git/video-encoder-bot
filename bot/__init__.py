@@ -9,7 +9,7 @@ bot_token = os.environ.get("BOT_TOKEN")
 download_dir = os.environ.get("DOWNLOAD_DIR", "downloads/")
 sudo_users = list(set(int(x) for x in os.environ.get("SUDO_USERS").split()))
 
-app = Client("kai84", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
+app = Client(":memory:", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
 
 data = []
 
