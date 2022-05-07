@@ -11,12 +11,13 @@ from hachoir.parser import createParser
 
 aysnc def encode(filepath):
     basefilepath, extension = os.path.splitext(filepath)
-    output_filepath = basefilepath + '.mkv'
-    eni = basefilepath.split("/")[-1]
+    eni = filepath.split("/")[-1]
     xnx = eni.split(".")[-1]
+    nam = opm
     nam = opm.replace("_", " ")
     nam = opm.replace(".", " ")
-    nam = nam + '.mkv'
+    nam = nam + '.mkv
+    
     
 def get_duration(filepath):
     metadata = extractMetadata(createParser(filepath))
