@@ -19,7 +19,7 @@ def add_task(message: Message):
       if new_file:
         msg.edit("**⬆️ Video Encoded Starting To Upload ⬆️**")
         msg.edit("**⬆️ Uploading Video ⬆️**")
-        message.reply_document(new_file, filename=og, quote=True, force_document=True, caption=og)
+        message.reply_document(new_file, file_name=og, quote=True, force_document=True, caption=og)
         os.remove(new_file)
         msg.edit("**File Encoded**")
       else:
