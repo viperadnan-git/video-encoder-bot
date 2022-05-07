@@ -18,12 +18,11 @@ def add_task(message: Message):
       new_file, og = await encode(filepath)
       if new_file:
         msg.edit("```Video Encoded, getting metadata...```")
-        thumb = get_thumbnail(new_file)
-        width, height = get_width_height(new_file)
+        thumb = await get_thumbnail(new_file)
         msg.edit("```Uploading video...```")
         message.reply_document(new_file, quote=True, force_document=True, thumb="/bot/thumb.jpg", caption=og)
         os.remove(new_file)
-        os.remove("/bot/thumb.jpg"
+        os.remove("/bot/thumb.jpg")
         msg.edit("```Video Encoded to x265```")
       else:
         msg.edit("```Something wents wrong while encoding your file. Make sure it is not already in HEVC format.```")
