@@ -17,7 +17,17 @@ aysnc def encode(filepath):
     nam = opm.replace("_", " ")
     nam = opm.replace(".", " ")
     nam = nam + '.mkv'
-    
+
+new_name = anitopy.parse(nam)
+        anime_name = new_name["anime_title"]
+        joined_string = f"[{anime_name}]"
+        if "anime_season" in new_name.keys():
+            animes_season = new_name["anime_season"]
+            joined_string = f"{joined_string}" + f" [Season {animes_season}]"
+        if "episode_number" in new_name.keys():
+            episode_no = new_name["episode_number"]
+            joined_string = f"{joined_string}" + f" [Episode {episode_no}]"
+        og = joined_string + " [@R136a1Encodes]" + '".mkv"    
     
 def get_duration(filepath):
     metadata = extractMetadata(createParser(filepath))
