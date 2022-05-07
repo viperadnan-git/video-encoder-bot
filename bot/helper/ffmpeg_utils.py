@@ -26,10 +26,10 @@ aysnc def encode(filepath):
     if "episode_number" in new_name.keys():
       episode_no = new_name["episode_number"]
       joined_string = f"{joined_string}" + f" [Episode {episode_no}]"
-    og = joined_string + " [@S136r136a1]" + ".mkv"
+    og = joined_string + " [@R136a1Encodes]" + ".mkv"
+ffmpeg = f""
 
   
-    
 def get_duration(filepath):
     metadata = extractMetadata(createParser(filepath))
     if metadata.has("duration"):
