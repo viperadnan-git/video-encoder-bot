@@ -5,12 +5,12 @@ from pyrogram.types import Message
 from pyrogram.errors.exceptions.bad_request_400 import MessageNotModified
 from .ffmpeg_utils import encode, get_thumbnail
 
-def on_task_complete():
+async def on_task_complete():
     del data[0]
     if len(data) > 0:
       add_task(data[0])
 
-def add_task(message: Message):
+async def add_task(message: Message):
     try:
       msg = message.reply_text("```Downloading video...```", quote=True)
       filepath = message.download(file_name=download_dir)
