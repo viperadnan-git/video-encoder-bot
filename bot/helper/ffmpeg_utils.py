@@ -37,7 +37,7 @@ aysnc def encode(filepath):
       joined_string = f"{joined_string}" + f" [Episode {episode_no}]"
     og = joined_string + " [@R136a1Encodes]" + ".mkv"
     output_filepath = og
-    ffmpeg_cmd = f"ffmpeg -i {filepath} -map 0 -c:s copy {output_filepath} -y"
+    ffmpeg_cmd = f'ffmpeg -i "{filepath}" -map 0 -c:s copy "{output_filepath}" -y'
     await run_subprocess(ffmpeg_cmd)
     os.remove(filepath)
     return output_filepath, og
