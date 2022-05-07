@@ -15,10 +15,10 @@ def add_task(message: Message):
       msg = message.reply_text("```Downloading video...```", quote=True)
       filepath = message.download(file_name=download_dir)
       msg.edit("```Encoding video...```")
-      new_file, og = await encode(filepath)
+      new_file, og = encode(filepath)
       if new_file:
         msg.edit("```Video Encoded, getting metadata...```")
-        thumb = await get_thumbnail(filepath)
+        thumb = get_thumbnail(filepath)
         msg.edit("```Uploading video...```")
         message.reply_document(new_file, quote=True, force_document=True, thumb="/bot/thumb.jpg", caption=og)
         os.remove(new_file)
