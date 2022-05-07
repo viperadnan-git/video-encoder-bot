@@ -39,6 +39,8 @@ aysnc def encode(filepath):
     output_filepath = og
     ffmpeg_cmd = f"ffmpeg -i {filepath} -map 0 -c:s copy {output_filepath} -y"
     await run_subprocess(ffmpeg_cmd)
+    os.remove(filepath)
+
     
 
   
