@@ -9,7 +9,7 @@ from subprocess import call, check_output
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 
-async def run_subprocess(cmd):
+def run_subprocess(cmd):
     process = await asyncio.create_subprocess_shell(
         cmd,
         stdout=asyncio.subprocess.PIPE,
@@ -17,8 +17,7 @@ async def run_subprocess(cmd):
     )
     return await process.communicate()
 
-
-aysnc def encode(filepath):
+def encode(filepath):
     basefilepath, extension = os.path.splitext(filepath)
     eni = filepath.split("/")[-1]
     xnx = eni.split(".")[-1]
@@ -38,12 +37,12 @@ aysnc def encode(filepath):
     og = joined_string + " [@R136a1Encodes]" + ".mkv"
     output_filepath = og
     ffmpeg_cmd = f"ffmpeg -i {filepath} -map 0 -c:s copy {output_filepath} -y"
-    await run_subprocess(ffmpeg_cmd)
+    run_subprocess(ffmpeg_cmd)
     os.remove(filepath)
     return output_filepath, og
 
 
-aysnc def get_thumbnail(filepath):
+def get_thumbnail(filepath):
     screenshot_cmd = f'ffmpeg -i  {filepath} -ss 00:30 -vframes=1 "/bot/thumb.jpg" -y'
     await run_subprocess(screenshot_cmd)
   
