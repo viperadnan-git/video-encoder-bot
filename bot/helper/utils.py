@@ -15,16 +15,15 @@ def add_task(message: Message):
       msg = message.reply_text("```Downloading video...```", quote=True)
       filepath = message.download(file_name=download_dir)
       msg.edit("```Encoding video...```")
-      new_file = await encode(filepath)
+      new_file, og = await encode(filepath)
       if new_file:
         msg.edit("```Video Encoded, getting metadata...```")
-        duration = get_duration(new_file)
-        thumb = get_thumbnail(new_file, download_dir, duration / 4)
+        thumb = get_thumbnail(new_file)
         width, height = get_width_height(new_file)
         msg.edit("```Uploading video...```")
-        message.reply_video(new_file, quote=True, supports_streaming=True, thumb=thumb, duration=duration, width=width, height=height)
+        message.reply_document(new_file, quote=True, force_document=True, thumb="/bot/thumb.jpg", caption=og)
         os.remove(new_file)
-        os.remove(thumb)
+        os.remove("/bot/thumb.jpg"
         msg.edit("```Video Encoded to x265```")
       else:
         msg.edit("```Something wents wrong while encoding your file. Make sure it is not already in HEVC format.```")
