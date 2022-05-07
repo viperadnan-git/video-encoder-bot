@@ -43,6 +43,8 @@ aysnc def encode(filepath):
     return output_filepath, og
 
 
+aysnc def get_thumbnail(filepath):
+
     
 
   
