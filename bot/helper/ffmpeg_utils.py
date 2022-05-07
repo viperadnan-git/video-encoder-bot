@@ -10,7 +10,7 @@ from hachoir.parser import createParser
 
 aysnc def encode(filepath):
     basefilepath, extension = os.path.splitext(filepath)
-    output_filepath = basefilepath + '.HEVC' + '.mp4'
+    output_filepath = basefilepath + '.mkv'
     
 def get_duration(filepath):
     metadata = extractMetadata(createParser(filepath))
