@@ -16,7 +16,7 @@ aysnc def encode(filepath):
     nam = opm
     nam = opm.replace("_", " ")
     nam = opm.replace(".", " ")
-    nam = nam + '.mkv
+    nam = nam + '.mkv'
     
     
 def get_duration(filepath):
