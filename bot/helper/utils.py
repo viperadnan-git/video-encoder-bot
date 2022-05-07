@@ -12,23 +12,23 @@ def on_task_complete():
 
 def add_task(message: Message):
     try:
-      msg = message.reply_text("```Downloading video...```", quote=True)
+      msg = message.reply_text("⬇️ **Downloading Video** ⬇️", quote=True)
       filepath = message.download(file_name=download_dir)
-      msg.edit("```Encoding video...```")
+      msg.edit(f"**Encoding The Given File\n-->** ```{filepath}```")
       new_file, og = encode(filepath)
       if new_file:
-        msg.edit("```Video Encoded, getting metadata...```")
+        msg.edit("**⬆️ Video Encoded Starting To Upload ⬆️**")
         thumb = get_thumbnail(filepath)
-        msg.edit("```Uploading video...```")
+        msg.edit("**⬆️ Uploading Video ⬆️**")
         message.reply_document(new_file, quote=True, force_document=True, thumb="/bot/thumb.jpg", caption=og)
         os.remove(new_file)
         os.remove("/bot/thumb.jpg")
-        msg.edit("```Video Encoded```")
+        msg.edit("**File Encoded**")
       else:
-        msg.edit("```Something wents wrong while encoding your file.```")
+        msg.edit("**Error Contact @NIRUSAKIMARVALE**")
         os.remove(filepath)
     except MessageNotModified:
       pass
-    except Exception:
-        pass
+    except Exception as e:
+      msg.edit(f"```{e}```")
     on_task_complete()
