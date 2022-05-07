@@ -1,8 +1,9 @@
 import os
 from bot import data, download_dir
+import asyncio
 from pyrogram.types import Message
 from pyrogram.errors.exceptions.bad_request_400 import MessageNotModified
-from .ffmpeg_utils import encode, get_thumbnail, get_duration, get_width_height
+from .ffmpeg_utils import encode, get_thumbnail
 
 def on_task_complete():
     del data[0]
@@ -11,22 +12,18 @@ def on_task_complete():
 
 def add_task(message: Message):
     try:
-      msg = message.reply_text("```Downloading video...```", quote=True)
+      msg = message.reply_text("⬇️ **Downloading Video** ⬇️", quote=True)
       filepath = message.download(file_name=download_dir)
-      msg.edit("```Encoding video...```")
-      new_file = encode(filepath)
+      msg.edit(f"**Encoding The Given File\n-->** ```{filepath}```")
+      new_file, og = encode(filepath)
       if new_file:
-        msg.edit("```Video Encoded, getting metadata...```")
-        duration = get_duration(new_file)
-        thumb = get_thumbnail(new_file, download_dir, duration / 4)
-        width, height = get_width_height(new_file)
-        msg.edit("```Uploading video...```")
-        message.reply_video(new_file, quote=True, supports_streaming=True, thumb=thumb, duration=duration, width=width, height=height)
+        msg.edit("**⬆️ Video Encoded Starting To Upload ⬆️**")
+        msg.edit("**⬆️ Uploading Video ⬆️**")
+        message.reply_document(new_file, filename=og, quote=True, force_document=True, caption=og)
         os.remove(new_file)
-        os.remove(thumb)
-        msg.edit("```Video Encoded to x265```")
+        msg.edit("**File Encoded**")
       else:
-        msg.edit("```Something wents wrong while encoding your file. Make sure it is not already in HEVC format.```")
+        msg.edit("**Error Contact @NIRUSAKIMARVALE**")
         os.remove(filepath)
     except MessageNotModified:
       pass

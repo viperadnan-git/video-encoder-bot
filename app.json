@@ -26,10 +26,7 @@
         "SUDO_USERS": {
             "description": "put your id if you want others to use it then put their IDs too here",
             "required": "True"
-        },
-        "DOWNLOAD_DIR": {
-            "description": "download/",
-            "required": "False"
+
         }
     },
     "stack": "container",
