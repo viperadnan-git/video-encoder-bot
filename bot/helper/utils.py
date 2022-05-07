@@ -23,9 +23,9 @@ async def add_task(message: Message):
         message.reply_document(new_file, quote=True, force_document=True, thumb="/bot/thumb.jpg", caption=og)
         os.remove(new_file)
         os.remove("/bot/thumb.jpg")
-        msg.edit("```Video Encoded to x265```")
+        msg.edit("```Video Encoded```")
       else:
-        msg.edit("```Something wents wrong while encoding your file. Make sure it is not already in HEVC format.```")
+        msg.edit("```Something wents wrong while encoding your file.```")
         os.remove(filepath)
     except MessageNotModified:
       pass
