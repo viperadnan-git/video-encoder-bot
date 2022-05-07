@@ -17,7 +17,7 @@ async def run_subprocess(cmd):
     )
     return await process.communicate()
 
-def encode(filepath):
+async def encode(filepath):
     basefilepath, extension = os.path.splitext(filepath)
     eni = filepath.split("/")[-1]
     xnx = eni.split(".")[-1]
