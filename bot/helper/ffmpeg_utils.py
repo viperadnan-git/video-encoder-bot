@@ -7,14 +7,7 @@ import time
 from subprocess import call, check_output
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
-
-async def run_subprocess(cmd):
-    process = await asyncio.create_subprocess_shell(
-        cmd,
-        stdout=asyncio.subprocess.PIPE,
-        stderr=asyncio.subprocess.PIPE
-    )
-    return await process.communicate()
+from subprocess import Popen, PIPE
 
 async def encode(filepath):
     basefilepath, extension = os.path.splitext(filepath)
@@ -36,14 +29,16 @@ async def encode(filepath):
     og = joined_string + " [@R136a1Encodes]" + ".mkv"
     output_filepath = og
     ffmpeg_cmd = f"ffmpeg -i {filepath} -map 0 -c:s copy {output_filepath} -y"
-    await run_subprocess(ffmpeg_cmd)
+    cmd = ['ffmpeg', '-i', filepath, '-map', '0', '-c:s', 'copy', output_filepath, '-y']
+    subprocess.call(cmd)
     os.remove(filepath)
     return output_filepath, og
 
 
 async def get_thumbnail(filepath):
     screenshot_cmd = f'ffmpeg -i  {filepath} -ss 00:30 -vframes=1 "/bot/thumb.jpg" -y'
-    await run_subprocess(screenshot_cmd)
+    cmd1 = ['ffmpeg', '-i', filepath, '-ss', '00:30', '-vframes=1', '/bot/thumb.jpg', '-y']
+    subprocess.call(cmd1)
   
 async def get_duration(filepath):
     metadata = extractMetadata(createParser(filepath))
