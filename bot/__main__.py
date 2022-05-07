@@ -28,7 +28,7 @@ def encode_video(app, message):
     if message.document:
       if not message.document.mime_type in video_mimetype:
         message.reply_text("```Invalid Video !\nMake sure its a valid video file.```", quote=True)
-         return
+        return
     message.reply_text("```Added to queue...```", quote=True)
     data.append(message)
     if len(data) == 1:
