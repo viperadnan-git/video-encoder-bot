@@ -3,7 +3,7 @@ import os
 import sys
 import json
 import time
-import ffmpeg
+from bot import ffmpeg
 from subprocess import call, check_output
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
