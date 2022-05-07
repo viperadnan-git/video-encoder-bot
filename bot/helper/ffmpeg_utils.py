@@ -11,7 +11,7 @@ from subprocess import Popen, PIPE
 
 def encode(filepath):
     basefilepath, extension = os.path.splitext(filepath)
-    output_filepath = basefilepath + "R136A1_Encodes"
+    output_filepath = basefilepath + "R136A1_Encodes" + ".mkv"
     nam = output_filepath.replace("_", " ")
     nam = nam.replace(".", " ")
     nam = nam + '.mkv'
