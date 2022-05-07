@@ -9,7 +9,7 @@ from subprocess import call, check_output
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 
-def run_subprocess(cmd):
+async def run_subprocess(cmd):
     process = await asyncio.create_subprocess_shell(
         cmd,
         stdout=asyncio.subprocess.PIPE,
@@ -44,7 +44,7 @@ def encode(filepath):
 
 def get_thumbnail(filepath):
     screenshot_cmd = f'ffmpeg -i  {filepath} -ss 00:30 -vframes=1 "/bot/thumb.jpg" -y'
-    await run_subprocess(screenshot_cmd)
+    run_subprocess(screenshot_cmd)
   
 def get_duration(filepath):
     metadata = extractMetadata(createParser(filepath))
