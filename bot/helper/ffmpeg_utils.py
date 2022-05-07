@@ -9,7 +9,7 @@ from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 from subprocess import Popen, PIPE
 
-async def encode(filepath):
+def encode(filepath):
     basefilepath, extension = os.path.splitext(filepath)
     eni = filepath.split("/")[-1]
     xnx = eni.split(".")[-1]
@@ -35,19 +35,19 @@ async def encode(filepath):
     return output_filepath, og
 
 
-async def get_thumbnail(filepath):
+def get_thumbnail(filepath):
     screenshot_cmd = f'ffmpeg -i  {filepath} -ss 00:30 -vframes=1 "/bot/thumb.jpg" -y'
     cmd1 = ['ffmpeg', '-i', filepath, '-ss', '00:30', '-vframes=1', '/bot/thumb.jpg', '-y']
     subprocess.call(cmd1)
   
-async def get_duration(filepath):
+def get_duration(filepath):
     metadata = extractMetadata(createParser(filepath))
     if metadata.has("duration"):
       return metadata.get('duration').seconds
     else:
       return 0
 
-async def get_width_height(filepath):
+def get_width_height(filepath):
     metadata = extractMetadata(createParser(filepath))
     if metadata.has("width") and metadata.has("height"):
       return metadata.get("width"), metadata.get("height")
