@@ -1,4 +1,5 @@
 import os
+import asyncio
 from pyrogram import Client
 from dotenv import load_dotenv
 
