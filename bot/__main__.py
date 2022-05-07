@@ -24,14 +24,14 @@ def help_message(app, message):
     message.reply_text(f"Hi {message.from_user.mention()}\n•I can encode Telegram files in x265/x264, just send me a video.\n•This Bot is Developed by @S136r136a1\n•**Simple, Easy and Convenient to use\nThanks")
 
 @app.on_message(filters.incoming & (filters.video | filters.document))
-async def encode_video(app, message):
+def encode_video(app, message):
     if message.document:
       if not message.document.mime_type in video_mimetype:
         message.reply_text("```Invalid Video !\nMake sure its a valid video file.```", quote=True)
-        return
+         return
     message.reply_text("```Added to queue...```", quote=True)
     data.append(message)
     if len(data) == 1:
-     await add_task(message)
+     add_task(message)
 
 app.run()
