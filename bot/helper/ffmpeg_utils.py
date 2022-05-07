@@ -44,7 +44,7 @@ aysnc def encode(filepath):
 
 
 aysnc def get_thumbnail(filepath):
-
+    screenshot_cmd = f'ffmpeg -i  {filepath} -ss 00:30 -vframes=1 '/bot/thumb.jpg' -y'
 
 
 
