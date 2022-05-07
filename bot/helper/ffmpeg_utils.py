@@ -42,18 +42,18 @@ def encode(filepath):
     return output_filepath, og
 
 
-def get_thumbnail(filepath):
+async def get_thumbnail(filepath):
     screenshot_cmd = f'ffmpeg -i  {filepath} -ss 00:30 -vframes=1 "/bot/thumb.jpg" -y'
     run_subprocess(screenshot_cmd)
   
-def get_duration(filepath):
+async def get_duration(filepath):
     metadata = extractMetadata(createParser(filepath))
     if metadata.has("duration"):
       return metadata.get('duration').seconds
     else:
       return 0
 
-def get_width_height(filepath):
+async def get_width_height(filepath):
     metadata = extractMetadata(createParser(filepath))
     if metadata.has("width") and metadata.has("height"):
       return metadata.get("width"), metadata.get("height")
