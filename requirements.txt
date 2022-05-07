@@ -1,5 +1,6 @@
-pyrogram
+pyrogram==1.4.16
 TgCrypto
 python-dotenv
 hachoir
-
+anitopy
+asyncio
