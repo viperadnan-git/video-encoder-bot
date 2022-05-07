@@ -35,9 +35,6 @@ def get_thumbnail(filepath):
     outputfilepath='/bot/thumb.jpg'
     screenshot_cmd ='-ss 00:30 -frames:v 1 -q:v 2'
     call(['ffmpeg', '-i', filepath] + screenshot_cmd.split() + [outputfilepath])
-    return out_filename
-    except:
-        pass
   
 def get_duration(filepath):
     metadata = extractMetadata(createParser(filepath))
