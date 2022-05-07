@@ -9,6 +9,15 @@ from subprocess import call, check_output
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 
+async def run_subprocess(cmd):
+    process = await asyncio.create_subprocess_shell(
+        cmd,
+        stdout=asyncio.subprocess.PIPE,
+        stderr=asyncio.subprocess.PIPE
+    )
+    return await process.communicate()
+
+
 aysnc def encode(filepath):
     basefilepath, extension = os.path.splitext(filepath)
     eni = filepath.split("/")[-1]
