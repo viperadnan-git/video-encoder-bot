@@ -1,0 +1,47 @@
+{
+    "name": "R136A1 Encoder",
+    "logo": "https://telegra.ph//file/791610f05ecd7543d6b39.jpg",
+    "description": "Best Encoder Bot",
+    "keywords": [
+        "Best",
+        "Nice",
+        "good"
+    ],
+    "repository": "https://github.com/unknown263/video-encoder-bot8364",
+    "website": "https://github.com/unknown263/video-encoder-bot8364",
+    "success_url": "https://github.com/unknown263/video-encoder-bot8364",
+    "env": {
+        "API_ID": {
+            "description": "Get it by creating an app on https://my.telegram.org",
+            "required": "True"
+        },
+        "API_HASH": {
+            "description": "Get it by creating an app on https://my.telegram.org",
+            "required": "True"
+        },
+        "BOT_TOKEN": {
+            "description": "after creating a bot in @BotFather you will get some random Letter and number paste it here",
+            "required": "True"
+        },
+        "SUDO_USERS": {
+            "description": "put your id if you want others to use it then put their IDs too here",
+            "required": "True"
+        },
+        "DOWNLOAD_DIR": {
+            "description": "download/",
+            "required": "False"
+        },
+        "FFMPEG": {
+            "description": "Put your FFMPEG code.",
+            "value": "",
+            "required": "True"
+        }
+    },
+    "stack": "container",
+    "formation": {
+        "worker": {
+            "quantity": 1,
+            "size": "free"
+        }
+    }
+}

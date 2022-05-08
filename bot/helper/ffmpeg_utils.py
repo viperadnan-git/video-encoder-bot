@@ -2,11 +2,10 @@ import os
 import sys
 import json
 import time
-import ffmpeg
 from subprocess import call, check_output
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
-
+ffmpeg = 'ffmpeg'
 def get_codec(filepath, channel='v:0'):
     output = check_output(['ffprobe', '-v', 'error', '-select_streams', channel,
                             '-show_entries', 'stream=codec_name,codec_tag_string', '-of', 
@@ -15,7 +14,7 @@ def get_codec(filepath, channel='v:0'):
 
 def encode(filepath):
     basefilepath, extension = os.path.splitext(filepath)
-    output_filepath = basefilepath + '.HEVC' + '.mp4'
+    output_filepath = basefilepath + '.HEVC' + '.mkv'
     assert(output_filepath != filepath)
     if os.path.isfile(output_filepath):
         print('Skipping "{}": file already exists'.format(output_filepath))
@@ -61,8 +60,9 @@ def get_thumbnail(in_filename, path, ttl):
             .run(capture_stdout=True, capture_stderr=True)
         )
         return out_filename
-    except ffmpeg.Error as e:
-      return None
+    except:
+        pass
+        return None
 
 def get_duration(filepath):
     metadata = extractMetadata(createParser(filepath))
